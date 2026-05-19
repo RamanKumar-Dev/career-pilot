@@ -6,6 +6,7 @@ import { resumeApi } from '../services/api'
 import Button from '../components/Button'
 import Card from '../components/Card'
 import { SkeletonResumeView } from '../components/ui/Skeleton'
+import CustomSection, { sectionsToMarkdown } from '../components/CustomSection'
 
 export default function ResumeView() {
   const { resumeId } = useParams()
@@ -15,6 +16,26 @@ export default function ResumeView() {
   const [loading, setLoading] = useState(true)
   const [downloading, setDownloading] = useState(false)
   const [activeTab, setActiveTab] = useState('enhanced') // 'original' or 'enhanced'
+
+  // ── Custom sections – persisted per-resume in localStorage ───────────────
+  const STORAGE_KEY = `resume_custom_sections_${resumeId}`
+  const [customSections, setCustomSections] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      return saved ? JSON.parse(saved) : []
+    } catch {
+      return []
+    }
+  })
+
+  const handleSectionsChange = (sections) => {
+    setCustomSections(sections)
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(sections))
+    } catch {
+      // storage quota exceeded – silently ignore
+    }
+  }
 
   useEffect(() => {
     fetchResume()
@@ -144,7 +165,7 @@ export default function ResumeView() {
             <h2 className="text-lg font-medium text-foreground">
               {activeTab === 'enhanced' ? 'AI-Enhanced Resume' : 'Original Resume'}
             </h2>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
               <Button
                 variant="primary"
                 onClick={handleDownloadPdf}
@@ -154,14 +175,30 @@ export default function ResumeView() {
               </Button>
               <Button
                 variant="secondary"
-                onClick={() => handleCopy(
-                  activeTab === 'enhanced'
-                    ? resume?.enhancedText
-                    : resume?.originalText
-                )}
+                onClick={() =>
+                  handleCopy(
+                    activeTab === 'enhanced'
+                      ? resume?.enhancedText
+                      : resume?.originalText,
+                  )
+                }
               >
                 Copy to Clipboard
               </Button>
+              {customSections.length > 0 && (
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    const base =
+                      activeTab === 'enhanced'
+                        ? resume?.enhancedText
+                        : resume?.originalText
+                    handleCopy((base || '') + '\n\n' + sectionsToMarkdown(customSections))
+                  }}
+                >
+                  Copy with Custom Sections
+                </Button>
+              )}
             </div>
           </div>
 
@@ -288,6 +325,14 @@ export default function ResumeView() {
             </div>
           </Card>
         )}
+
+        {/* ── Custom Sections ─────────────────────────────────────────────── */}
+        <Card className="mt-6">
+          <CustomSection
+            sections={customSections}
+            onSectionsChange={handleSectionsChange}
+          />
+        </Card>
       </div>
     </div>
   )
