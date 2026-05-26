@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/anurag3407/career-pilot/compare/v1.22.1...v1.23.0) (2026-05-26)
+
+
+### Features
+
+* add Glitch Reveal portfolio template ([62a03e8](https://github.com/anurag3407/career-pilot/commit/62a03e8fddd8af669acdaaa012b514b3f7a1cb57))
+
 ## [1.22.1](https://github.com/anurag3407/career-pilot/compare/v1.22.0...v1.22.1) (2026-05-26)
 
 
