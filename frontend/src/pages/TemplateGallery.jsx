@@ -7,6 +7,7 @@ import { Moon, Sun, ChevronDown, Check, Eye, Star } from "lucide-react";
 import HolographicAbout from "../components/portfolio/templates/Holographic/About";
 import CulinaryAbout from "../components/portfolio/templates/Culinary_Restaurant/About";
 import TechStartupHero from "../components/portfolio/templates/Tech_Startup/Hero";
+import ArchitectureBlueprintHero from "../components/portfolio/templates/Architecture_Blueprint/Hero";
 import GeometricShapesAbout from "../components/portfolio/templates/Geometric_Shapes/About";
 import GeometricShapesHero from "../components/portfolio/templates/Geometric_Shapes/Hero";
 import LiquidGlass from "../components/portfolio/templates/Liquid_Glass/index";
@@ -257,6 +258,7 @@ export default function TemplateGallery() {
     { value: "Grid", label: "Grid" },
     { value: "Minimal", label: "Minimal" },
     { value: "Cards", label: "Cards" },
+    { value: "Interactive", label: "Interactive" },
   ];
   const SORT_OPTIONS = [
     { value: "Popular", label: "Popular" },
