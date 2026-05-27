@@ -1,3 +1,11 @@
+# [1.42.0](https://github.com/anurag3407/career-pilot/compare/v1.41.0...v1.42.0) (2026-05-27)
+
+
+### Features
+
+* add cyberpunk contact section ([652b062](https://github.com/anurag3407/career-pilot/commit/652b062fa60e4f900e4717e8931d5f505e4933b1))
+* add cyberpunk projects section ([51197da](https://github.com/anurag3407/career-pilot/commit/51197da937e250dbd9f365de7db2bb6244adde82))
+
 # [1.41.0](https://github.com/anurag3407/career-pilot/compare/v1.40.0...v1.41.0) (2026-05-27)
 
 
