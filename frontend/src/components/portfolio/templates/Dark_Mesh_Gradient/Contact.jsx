@@ -1,16 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Twitter, Send, MapPin } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
 import data from '../../../../data/dummy_data.json';
 
 export default function Contact() {
   const { personal, socials } = data;
 
   const socialLinks = [
-    { icon: Github, url: socials.github, label: 'GitHub', color: 'hover:text-purple-400 hover:border-purple-500/30' },
-    { icon: Linkedin, url: socials.linkedin, label: 'LinkedIn', color: 'hover:text-blue-400 hover:border-blue-500/30' },
-    { icon: Twitter, url: socials.twitter, label: 'Twitter', color: 'hover:text-cyan-400 hover:border-cyan-500/30' },
-    { icon: Mail, url: `mailto:${socials.email}`, label: 'Email', color: 'hover:text-pink-400 hover:border-pink-500/30' },
+    { icon: Github, url: socials.github, label: 'GitHub' },
+    { icon: Linkedin, url: socials.linkedin, label: 'LinkedIn' },
+    { icon: Twitter, url: socials.twitter, label: 'Twitter' },
+    { icon: Mail, url: `mailto:${socials.email}`, label: 'Email' },
   ];
 
   const handleSubmit = (e) => {
@@ -30,51 +30,42 @@ export default function Contact() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Left Side: Contact Cards */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-5 flex flex-col justify-between"
-        >
+        {/* Left Side */}
+        <motion.div className="lg:col-span-5 flex flex-col justify-between">
           <div className="space-y-6">
-            <h3 className="text-2xl md:text-3xl font-bold text-white leading-snug">
-              Let's build something remarkable together.
+            <h3 className="text-2xl md:text-3xl font-bold text-white">
+              Let&apos;s build something remarkable together.
             </h3>
-            <p className="text-gray-400 leading-relaxed max-w-md">
-              Whether you have a project in mind, want to discuss a potential partnership, or simply want to say hello, feel free to drop a message.
+
+            <p className="text-gray-400 max-w-md">
+              Whether you have a project in mind or just want to say hello.
             </p>
 
             <div className="space-y-4 pt-6">
-              {/* Email Card */}
               <a
                 href={`mailto:${socials.email}`}
-                className="flex items-center gap-4 p-5 rounded-2xl bg-gray-900/30 border border-white/5 backdrop-blur-md hover:border-purple-500/30 transition-all duration-300 group"
+                className="flex items-center gap-4 p-5 rounded-2xl bg-gray-900/30 border border-white/5"
               >
-                <div className="p-3.5 rounded-xl bg-purple-500/10 text-purple-400 group-hover:bg-purple-500/20 group-hover:text-white transition-colors">
-                  <Mail className="w-5 h-5" />
-                </div>
+                <Mail className="w-5 h-5 text-purple-400" />
                 <div>
-                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider block">
+                  <span className="text-xs text-gray-500 uppercase block">
                     Email Me
                   </span>
-                  <span className="text-sm font-semibold text-gray-200 group-hover:text-white transition-colors block mt-0.5">
+                  <span className="text-sm text-gray-200 block mt-0.5">
                     {socials.email}
                   </span>
                 </div>
               </a>
 
-              {/* Location Card */}
-              <div className="flex items-center gap-4 p-5 rounded-2xl bg-gray-900/30 border border-white/5 backdrop-blur-md">
-                <div className="p-3.5 rounded-xl bg-pink-500/10 text-pink-400">
-                  <MapPin className="w-5 h-5" />
+              <div className="flex items-center gap-4 p-5 rounded-2xl bg-gray-900/30 border border-white/5">
+                <div className="text-pink-400">
+                  📍
                 </div>
                 <div>
-                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider block">
+                  <span className="text-xs text-gray-500 uppercase block">
                     Location
                   </span>
-                  <span className="text-sm font-semibold text-gray-200 block mt-0.5">
+                  <span className="text-sm text-gray-200 block mt-0.5">
                     {personal.location}
                   </span>
                 </div>
@@ -82,18 +73,16 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Socials Row */}
-          <div className="flex gap-3 pt-8 lg:pt-0">
+          {/* Socials */}
+          <div className="flex gap-3 pt-8">
             {socialLinks.map((social, index) => {
               const Icon = social.icon;
               return (
                 <a
                   key={index}
                   href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   aria-label={social.label}
-                  className={`p-3.5 rounded-xl bg-gray-900/40 border border-white/10 text-gray-400 hover:text-white hover:bg-gray-900/60 transition-all duration-300 hover:-translate-y-1 backdrop-blur-md ${social.color}`}
+                  className="p-3 rounded-xl bg-gray-900/40 border border-white/10"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -102,84 +91,85 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Right Side: Contact Form Card */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-7"
-        >
+        {/* Right Side Form */}
+        <motion.div className="lg:col-span-7">
           <form
             onSubmit={handleSubmit}
-            className="p-8 rounded-3xl bg-gray-900/25 border border-white/5 backdrop-blur-md shadow-2xl space-y-6"
+            className="p-8 rounded-3xl bg-gray-900/25 border border-white/5 space-y-6"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  className="w-full px-5 py-4 rounded-xl bg-gray-950/60 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-colors"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  placeholder="john@example.com"
-                  className="w-full px-5 py-4 rounded-xl bg-gray-950/60 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-colors"
-                  required
-                />
-              </div>
-            </div>
-
+            {/* Full Name */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">
-                Subject
+              <label htmlFor="contact-full-name" className="text-xs text-gray-400 uppercase">
+                Full Name
               </label>
               <input
+                id="contact-full-name"
+                name="fullName"
                 type="text"
-                placeholder="How can I help you?"
-                className="w-full px-5 py-4 rounded-xl bg-gray-950/60 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-colors"
+                placeholder="John Doe"
+                className="w-full px-5 py-4 rounded-xl bg-gray-950/60 border border-white/10 text-white"
                 required
               />
             </div>
 
+            {/* Email */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">
+              <label htmlFor="contact-email" className="text-xs text-gray-400 uppercase">
+                Email Address
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                placeholder="john@example.com"
+                className="w-full px-5 py-4 rounded-xl bg-gray-950/60 border border-white/10 text-white"
+                required
+              />
+            </div>
+
+            {/* Subject */}
+            <div className="space-y-2">
+              <label htmlFor="contact-subject" className="text-xs text-gray-400 uppercase">
+                Subject
+              </label>
+              <input
+                id="contact-subject"
+                name="subject"
+                type="text"
+                placeholder="How can I help you?"
+                className="w-full px-5 py-4 rounded-xl bg-gray-950/60 border border-white/10 text-white"
+                required
+              />
+            </div>
+
+            {/* Message */}
+            <div className="space-y-2">
+              <label htmlFor="contact-message" className="text-xs text-gray-400 uppercase">
                 Message
               </label>
               <textarea
-                placeholder="Tell me more about your project..."
+                id="contact-message"
+                name="message"
                 rows={5}
-                className="w-full px-5 py-4 rounded-xl bg-gray-950/60 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-colors resize-none"
+                placeholder="Tell me more about your project..."
+                className="w-full px-5 py-4 rounded-xl bg-gray-950/60 border border-white/10 text-white"
                 required
               />
             </div>
 
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white transition-all duration-300 shadow-xl shadow-purple-500/10 hover:shadow-purple-500/20"
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-white font-bold"
             >
               Send Message
-              <Send className="w-4 h-4" />
             </button>
           </form>
         </motion.div>
       </div>
 
-      {/* Footer copyright */}
-      <div className="mt-24 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      {/* Footer */}
+      <div className="mt-24 pt-8 border-t border-white/5 text-center text-gray-500 text-sm">
         <p>© {new Date().getFullYear()} {personal.name}. All rights reserved.</p>
-        <p className="flex items-center gap-1.5">
-          Designed & Built with <span className="text-pink-500 animate-pulse">❤️</span>
-        </p>
       </div>
     </section>
   );
