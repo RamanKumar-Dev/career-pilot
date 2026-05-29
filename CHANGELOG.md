@@ -1,3 +1,17 @@
+# [1.96.0](https://github.com/anurag3407/career-pilot/compare/v1.95.0...v1.96.0) (2026-05-29)
+
+
+### Bug Fixes
+
+* **app:** remove duplicate routes ([35e7f24](https://github.com/anurag3407/career-pilot/commit/35e7f2486d4ebcca154056f8a92f0f5717a9abef))
+* **frosted-panels:** fix mobile card overlap, mobile header padding overlap, and broken testimonial image URL ([1a20c9a](https://github.com/anurag3407/career-pilot/commit/1a20c9a339b06fc069889d5cf6ffcfc37d4d9e7f))
+* **frosted-panels:** resolve CodeRabbit review comments ([c53db38](https://github.com/anurag3407/career-pilot/commit/c53db3868006040c5944640ed543de56480f7f62))
+
+
+### Features
+
+* add Frosted Panels portfolio template ([4a00d48](https://github.com/anurag3407/career-pilot/commit/4a00d48b0ff6ead09ff884b3f3fce69de907ecc4))
+
 # [1.95.0](https://github.com/anurag3407/career-pilot/compare/v1.94.1...v1.95.0) (2026-05-29)
 
 
