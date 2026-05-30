@@ -1,3 +1,10 @@
+# [1.97.0](https://github.com/anurag3407/career-pilot/compare/v1.96.0...v1.97.0) (2026-05-30)
+
+
+### Features
+
+* add Project Visualizer section and enhance analysis features ([cea1200](https://github.com/anurag3407/career-pilot/commit/cea120011129c8b7a954cf4caabf18f89491c122))
+
 # [1.96.0](https://github.com/anurag3407/career-pilot/compare/v1.95.0...v1.96.0) (2026-05-29)
 
 
