@@ -13,6 +13,29 @@ import WeatherMood from "../components/portfolio/templates/Weather_Mood/index";
 import SwissTypography from "../components/portfolio/templates/Swiss_Typography/index";
 import DesertDunes from "../components/portfolio/templates/Desert_Dunes/index";
 
+/* Wraps each full-template preview in an isolated scroll container so
+   any `position:fixed` navbar inside the template stays scoped to the
+   preview box and never overlaps the TemplateGallery page navbar. */
+function TemplatePreviewFrame({ label, badge, badgeColor, children }) {
+  return (
+    <div className="mt-12">
+      <div className="mb-4 flex items-center gap-3 px-1">
+        <span className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest border ${badgeColor}`}>
+          Preview
+        </span>
+        <h2 className="text-lg font-semibold text-foreground/70">{label}</h2>
+      </div>
+      {/* isolation:isolate + overflow:clip confine fixed/sticky children */}
+      <div
+        className="overflow-hidden rounded-2xl border border-border"
+        style={{ position: "relative", isolation: "isolate", height: "600px", overflowY: "auto", overflowX: "hidden" }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function TemplateGallery() {
   const { theme, toggleTheme } = useTheme();
 
@@ -234,101 +257,69 @@ export default function TemplateGallery() {
         portfolioTitle={selectedPortfolioTitle}
       />
 
+      {/* Section-only previews — no internal navbar, plain wrapper is fine */}
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-cyan-400 border border-cyan-500/30">
-            Preview
-          </span>
+          <span className="rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-cyan-400 border border-cyan-500/30">Preview</span>
           <h2 className="text-lg font-semibold text-foreground/70">Holographic Theme — About Section</h2>
         </div>
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <HolographicAbout />
-        </div>
+        <div className="overflow-hidden rounded-2xl border border-border"><HolographicAbout /></div>
       </div>
 
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 border border-amber-500/30">
-            Preview
-          </span>
+          <span className="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 border border-amber-500/30">Preview</span>
           <h2 className="text-lg font-semibold text-foreground/70">Geometric Shapes Theme — About Section</h2>
         </div>
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <GeometricShapesAbout />
-        </div>
+        <div className="overflow-hidden rounded-2xl border border-border"><GeometricShapesAbout /></div>
       </div>
 
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 border border-amber-500/30">
-            Preview
-          </span>
+          <span className="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 border border-amber-500/30">Preview</span>
           <h2 className="text-lg font-semibold text-foreground/70">Culinary Restaurant Theme — About Section</h2>
         </div>
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <CulinaryAbout />
-        </div>
+        <div className="overflow-hidden rounded-2xl border border-border"><CulinaryAbout /></div>
       </div>
 
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-cyan-400 border border-cyan-500/30">
-            Preview
-          </span>
+          <span className="rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-cyan-400 border border-cyan-500/30">Preview</span>
           <h2 className="text-lg font-semibold text-foreground/70">Tech Startup Theme — Hero Section</h2>
         </div>
-        <div className="overflow-hidden rounded-2xl border border-cyan-500/20">
-          <TechStartupHero />
-        </div>
+        <div className="overflow-hidden rounded-2xl border border-cyan-500/20"><TechStartupHero /></div>
       </div>
 
-      <div className="mt-12">
-        <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-violet-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-violet-400 border border-violet-500/30">
-            Preview
-          </span>
-          <h2 className="text-lg font-semibold text-foreground/70">Choose Adventure Theme — Full Interactive Template</h2>
-        </div>
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <ChooseAdventurePortfolio />
-        </div>
-      </div>
+      {/* Full-template previews — each has its own fixed/sticky navbar.
+          TemplatePreviewFrame creates an isolated scroll container so
+          that navbar stays inside the preview box and never bleeds out. */}
+      <TemplatePreviewFrame
+        label="Choose Adventure Theme — Full Interactive Template"
+        badgeColor="bg-violet-500/20 text-violet-400 border-violet-500/30"
+      >
+        <ChooseAdventurePortfolio />
+      </TemplatePreviewFrame>
 
-      <div className="mt-12">
-        <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-sky-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-sky-400 border border-sky-500/30">
-            Preview
-          </span>
-          <h2 className="text-lg font-semibold text-foreground/70">Weather Mood Theme — Full Interactive Template</h2>
-        </div>
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <WeatherMood />
-        </div>
-      </div>
+      <TemplatePreviewFrame
+        label="Weather Mood Theme — Full Interactive Template"
+        badgeColor="bg-sky-500/20 text-sky-400 border-sky-500/30"
+      >
+        <WeatherMood />
+      </TemplatePreviewFrame>
 
-      <div className="mt-12">
-        <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-red-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-red-400 border border-red-500/30">
-            Preview
-          </span>
-          <h2 className="text-lg font-semibold text-foreground/70">Swiss Typography — Full Interactive Template</h2>
-        </div>
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <SwissTypography />
-        </div>
-      </div>
+      <TemplatePreviewFrame
+        label="Swiss Typography — Full Interactive Template"
+        badgeColor="bg-red-500/20 text-red-400 border-red-500/30"
+      >
+        <SwissTypography />
+      </TemplatePreviewFrame>
 
-      <div className="mt-12">
-        <div className="mb-4 flex items-center gap-3 px-1">
-          <span className="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-amber-400 border border-amber-500/30">
-            Preview
-          </span>
-          <h2 className="text-lg font-semibold text-foreground/70">Desert Dunes — Nature / Organic Template</h2>
-        </div>
-        <div className="overflow-hidden rounded-2xl border border-border">
-          <DesertDunes />
-        </div>
-      </div>
+      <TemplatePreviewFrame
+        label="Desert Dunes — Nature / Organic Template"
+        badgeColor="bg-amber-500/20 text-amber-400 border-amber-500/30"
+      >
+        <DesertDunes />
+      </TemplatePreviewFrame>
     </div>
   );
 }
