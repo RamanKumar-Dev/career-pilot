@@ -1,3 +1,15 @@
+# [1.118.0](https://github.com/anurag3407/career-pilot/compare/v1.117.0...v1.118.0) (2026-06-01)
+
+
+### Bug Fixes
+
+* update author to Advik Divekar in templates.js ([a03ee64](https://github.com/anurag3407/career-pilot/commit/a03ee6442d0a7db0f9f277c71bf2b43227ee2f1a))
+
+
+### Features
+
+* implement Twilight Horizon portfolio template ([#1925](https://github.com/anurag3407/career-pilot/issues/1925)) ([ed83bcb](https://github.com/anurag3407/career-pilot/commit/ed83bcb8966ceb0785074cb580fbaddc4c72536d))
+
 # [1.117.0](https://github.com/anurag3407/career-pilot/compare/v1.116.0...v1.117.0) (2026-06-01)
 
 
