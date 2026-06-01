@@ -2060,13 +2060,14 @@ export const templates = [
     "id": "Sunset_Warm",
     "title": "Sunset Warm",
     "category": "Portfolio",
-    "colorScheme": "Dark",
-    "layout": "Grid",
-    "author": "System",
-    "views": 1170,
-    "rating": 4.5,
+    "colorScheme": "Colorful",
+    "layout": "Interactive",
+    "author": "Advik Divekar",
+    "views": 2800,
+    "rating": 4.9,
     "image": "/template-previews/Sunset_Warm.png",
-    "createdAt": "2026-05-01"
+    "createdAt": "2026-05-31",
+    "isComplete": true
   },
   {
     "id": "Swiss_Typography",
