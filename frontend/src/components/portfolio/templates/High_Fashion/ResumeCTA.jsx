@@ -58,7 +58,7 @@ export default function ResumeCTA() {
       {/* ── Section header ── */}
       <motion.div
         initial={{ opacity: 0, y: -10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-        className="flex items-center justify-between px-8 md:px-16 py-6"
+        className="flex items-center justify-between px-5 md:px-16 py-5"
         style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="flex items-center gap-3">
           <span className="w-2 h-2" style={{ background: F.gold }} />
@@ -72,7 +72,7 @@ export default function ResumeCTA() {
       <div className="grid lg:grid-cols-2">
 
         {/* Left — CTA */}
-        <div className="px-8 md:px-16 py-14" style={{ borderRight: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="px-5 md:px-16 py-10 md:py-14" style={{ borderRight: '1px solid rgba(255,255,255,0.06)' }}>
           <motion.p
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.1 }}
@@ -138,7 +138,7 @@ export default function ResumeCTA() {
         </div>
 
         {/* Right — experience timeline */}
-        <div className="px-8 md:px-16 py-14">
+        <div className="px-5 md:px-16 py-10 md:py-14">
           <motion.p
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.1 }}

@@ -149,7 +149,7 @@ export default function Projects() {
 
       <motion.div
         initial={{ opacity: 0, y: -10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-        className="flex items-center justify-between px-8 md:px-16 py-6"
+        className="flex items-center justify-between px-5 md:px-16 py-5"
         style={{ borderBottom: `1px solid ${F.border}` }}>
         <div className="flex items-center gap-3">
           <span className="w-2 h-2" style={{ background: F.gold }} />
@@ -158,7 +158,7 @@ export default function Projects() {
         <span className="text-xs uppercase tracking-widest" style={{ color: F.subtle }}>§ 03</span>
       </motion.div>
 
-      <div className="px-8 md:px-16 py-10" style={{ borderBottom: `1px solid ${F.border}` }}>
+      <div className="px-5 md:px-16 py-8 md:py-10" style={{ borderBottom: `1px solid ${F.border}` }}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -178,7 +178,7 @@ export default function Projects() {
         </motion.p>
       </div>
 
-      <div className="px-8 md:px-16 py-10">
+      <div className="px-5 md:px-16 py-8 md:py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FeaturedCard project={featured} />
           {rest.map((p, i) => (
