@@ -1,3 +1,10 @@
+# [1.127.0](https://github.com/anurag3407/career-pilot/compare/v1.126.1...v1.127.0) (2026-06-02)
+
+
+### Features
+
+* add Spotify Wrapped portfolio theme template ([#909](https://github.com/anurag3407/career-pilot/issues/909)) ([e3d3daf](https://github.com/anurag3407/career-pilot/commit/e3d3daf540840367313c10bfebe503859b0f4a2d))
+
 ## [1.126.1](https://github.com/anurag3407/career-pilot/compare/v1.126.0...v1.126.1) (2026-06-02)
 
 
