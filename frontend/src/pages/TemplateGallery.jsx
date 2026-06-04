@@ -917,8 +917,6 @@ function TemplateCard({ template, hovered, onHover, onLeave, onUse, aiDraft }) {
         </div>
       </div>
 
-            </div>
-      </div>
     </div>
     </div>
   
