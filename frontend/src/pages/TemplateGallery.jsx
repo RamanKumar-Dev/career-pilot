@@ -1347,6 +1347,59 @@ export default function TemplateGallery() {
         </div>
       </div>
 
+      {/* Ocean Depths — sandboxed fixed-nav frame */}
+      <div className="mt-12">
+        <div className="mb-4 flex items-center gap-3 px-1">
+          <span className="rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-cyan-400 border border-cyan-500/30">
+            ≋ Ocean Depths
+          </span>
+          <h2 className="text-lg font-semibold text-foreground/70">Ocean Depths — Bioluminescent 3D/WebGL Portfolio</h2>
+        </div>
+        <div className="rounded-2xl border border-cyan-500/20"
+          style={{ height: 640, overflowY: "auto", overflowX: "hidden", transform: "translate(0)", position: "relative" }}>
+          <OceanDepths />
+        </div>
+      </div>
+
+      {/* Neon Cityscape — sandboxed fixed-nav frame */}
+      <div className="mt-12">
+        <div className="mb-4 flex items-center gap-3 px-1">
+          <span className="rounded-full bg-pink-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-pink-400 border border-pink-500/30">
+            ◈ Neon Cityscape
+          </span>
+          <h2 className="text-lg font-semibold text-foreground/70">Neon Cityscape — Cyberpunk Neon Portfolio</h2>
+        </div>
+        <div className="rounded-2xl border border-pink-500/20"
+          style={{ height: 640, overflowY: "auto", overflowX: "hidden", transform: "translate(0)", position: "relative" }}>
+          <NeonCityscape />
+        </div>
+      </div>
+
+      {/* Planetary Orbit — sandboxed fixed-nav frame */}
+      <div className="mt-12">
+        <div className="mb-4 flex items-center gap-3 px-1">
+          <span className="rounded-full bg-blue-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-blue-400 border border-blue-500/30">
+            ◎ Planetary Orbit
+          </span>
+          <h2 className="text-lg font-semibold text-foreground/70">Planetary Orbit — Solar System Navigation Portfolio</h2>
+        </div>
+        <div className="rounded-2xl border border-blue-500/20"
+          style={{ height: 640, overflowY: "auto", overflowX: "hidden", transform: "translate(0)", position: "relative" }}>
+          <PlanetaryOrbit />
+        </div>
+      </div>
+
+      {/* Low Poly Terrain — sandboxed fixed-nav frame */}
+      <div className="mt-12">
+        <div className="mb-4 flex items-center gap-3 px-1">
+          <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-emerald-400 border border-emerald-500/30">
+            △ Low Poly Terrain
+          </span>
+          <h2 className="text-lg font-semibold text-foreground/70">Low Poly Terrain — Animated Day/Night Cycle Portfolio</h2>
+        </div>
+        <div className="rounded-2xl border border-emerald-500/20"
+          style={{ height: 640, overflowY: "auto", overflowX: "hidden", transform: "translate(0)", position: "relative" }}>
+          <LowPolyTerrain />
       {/* High Fashion — sandboxed fixed-nav frame */}
       <div className="mt-12">
         <div className="mb-4 flex items-center gap-3 px-1">
