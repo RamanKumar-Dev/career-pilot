@@ -69,6 +69,8 @@ export default function ResumeBuilder() {
   const [skills, setSkills] = useState('')
   const [resumeScore, setResumeScore] = useState(0)
   const [recommendedSections, setRecommendedSections] = useState([])
+  const [resumeVersions, setResumeVersions] = useState([])
+  const [selectedVersion, setSelectedVersion] = useState(null)
 
 useEffect(() => {
   const recommendations = []
@@ -272,6 +274,22 @@ useEffect(() => {
     try {
       setIsSubmitting(true)
       const markdown = generateMarkdown()
+      const restoreVersion = (version) => {
+  setSelectedVersion(version)
+
+  toast.success(
+    `Restored version from ${version.timestamp}`
+  )
+}
+      const saveVersion = () => {
+  const newVersion = {
+    id: Date.now(),
+    timestamp: new Date().toLocaleString(),
+    content: generateMarkdown(),
+  }
+
+  setResumeVersions(prev => [newVersion, ...prev])
+}
       const response = await resumeApi.create({
         originalText: markdown,
         jobRole: targetRole || 'Software Engineer',
@@ -763,6 +781,14 @@ useEffect(() => {
         return (
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold mb-6">Preview &amp; Generate</h2>
+            <div className="flex justify-end mb-4">
+  <button
+    onClick={saveVersion}
+    className="px-4 py-2 rounded-lg bg-primary text-primary-foreground"
+  >
+    Save Version
+  </button>
+</div>
             <div className="mb-6 p-4 rounded-xl border border-border bg-background/50">
   <div className="flex justify-between items-center mb-2">
     <h3 className="font-semibold">
@@ -855,9 +881,38 @@ useEffect(() => {
     </div>
   </div>
 )}
-            <div className="bg-background border border-border rounded-xl p-6 h-[500px] overflow-y-auto font-mono text-sm whitespace-pre-wrap">
-              {generateMarkdown()}
-            </div>
+
+{resumeVersions.length > 0 && (
+  <div className="mb-6 p-4 rounded-xl border border-border bg-background/50">
+    <h3 className="font-semibold mb-3">
+      Resume Version History
+    </h3>
+
+    <div className="space-y-2">
+      {resumeVersions.map(version => (
+        <div
+          key={version.id}
+          className="flex justify-between items-center p-2 rounded-lg bg-background"
+        >
+          <span className="text-sm">
+            {version.timestamp}
+          </span>
+
+          <button
+            onClick={() => restoreVersion(version)}
+            className="text-primary text-sm font-medium"
+          >
+            Restore
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+<div className="bg-background border border-border rounded-xl p-6 h-[500px] overflow-y-auto font-mono text-sm whitespace-pre-wrap">
+  {generateMarkdown()}
+</div>
           </div>
         )
 
