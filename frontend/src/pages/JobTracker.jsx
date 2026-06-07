@@ -104,6 +104,10 @@ const JobTracker = () => {
     );
   };
 
+  const isUnrecoverableStatusUpdateError = (error) => {
+    return [400, 404, 422].includes(error?.status);
+  };
+
   const loadCachedTrackerData = () => {
     const snapshot = loadJobTrackerSnapshot(currentUserId);
     if (!snapshot) return false;
@@ -188,6 +192,7 @@ const JobTracker = () => {
 
     const syncedIds = [];
     let failedCount = 0;
+    let discardedCount = 0;
     let stoppedForNetwork = false;
 
     for (const update of queuedUpdates) {
@@ -200,8 +205,12 @@ const JobTracker = () => {
           stoppedForNetwork = true;
           break;
         }
-        failedCount += 1;
-        syncedIds.push(update.id);
+        if (isUnrecoverableStatusUpdateError(error)) {
+          discardedCount += 1;
+          syncedIds.push(update.id);
+        } else {
+          failedCount += 1;
+        }
       }
     }
 
@@ -213,6 +222,8 @@ const JobTracker = () => {
 
     if (failedCount) {
       toast.error("Some offline updates could not be synced and will be retried");
+    } else if (discardedCount) {
+      toast.error("Some offline updates could not be applied");
     } else if (syncedIds.length && !stoppedForNetwork) {
       toast.success("Offline Job Tracker changes synced", {
         id: "tracked-job-offline-sync",
