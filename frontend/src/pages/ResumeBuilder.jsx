@@ -164,14 +164,6 @@ export default function ResumeBuilder() {
   "Teamwork"
 ]
 
-const suggestions = prioritySkills.filter(
-  skill => missing.includes(skill)
-)
-
-setRecommendedSkills(
-  suggestions.slice(0, 4)
-)
-
   const resumeText = `
     ${personal.summary}
     ${skills}
