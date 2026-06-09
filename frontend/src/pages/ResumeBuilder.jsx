@@ -140,88 +140,24 @@ export default function ResumeBuilder() {
   setClaritySuggestions(suggestions)
 }, [personal, experience, projects])
 
- // ─────────────────── ATS Keyword Assessment Loop ───────────────────
+  // ─────────────────── ATS Keyword Assessment Loop ───────────────────
   useEffect(() => {
-  const keywords = [
-    "React",
-    "JavaScript",
-    "Git",
-    "Node.js",
-    "API",
-    "Leadership",
-    "Teamwork",
-    "Problem Solving"
-  ]
+    const keywords = [
+      "React",
+      "JavaScript",
+      "Git",
+      "Node.js",
+      "API",
+      "Leadership",
+      "Teamwork",
+      "Problem Solving"
+    ];
 
-  const prioritySkills = [
-  "React",
-  "JavaScript",
-  "Node.js",
-  "API",
-  "Git",
-  "Leadership",
-  "Problem Solving",
-  "Teamwork"
-]
-
-const missing = keywords.filter(
-  keyword => !foundKeywords.includes(keyword)
-)
-
-setMissingKeywords(missing)
-
-const suggestions = prioritySkills.filter(
-  skill => missing.includes(skill)
-)
-
-setRecommendedSkills(
-  suggestions.slice(0, 4)
-)
-
-setRecommendedSkills(
-  suggestions.slice(0, 4)
-)
-
-  const resumeText = `
-    ${personal.summary}
-    ${skills}
-    ${projects.map(p => p.description).join(" ")}
-    ${experience.map(e => e.description).join(" ")}
-  `.toLowerCase()
-
-  const foundKeywords = keywords.filter(keyword =>
-    resumeText.includes(keyword.toLowerCase())
-  )
-
-  const missing = keywords.filter(
-  keyword => !foundKeywords.includes(keyword)
-)
-
-setMissingKeywords(missing)
-
-setRecommendedSkills(
-  missing.slice(0, 4)
-)
-
-setAtsScore(
-  Math.round(
-    (foundKeywords.length / keywords.length) * 100
-  )
-)
-}, [
-  personal,
-  skills,
-  projects,
-  experience
-])
-
-useEffect(() => {
-  const recommendations = []
     const resumeText = `
       ${personal?.summary || ''}
       ${skills || ''}
-      ${(projects || []).map(p => p.description).join(" ")}
-      ${(experience || []).map(e => e.description).join(" ")}
+      ${(projects || []).map(p => p.description || '').join(" ")}
+      ${(experience || []).map(e => e.description || '').join(" ")}
     `.toLowerCase();
 
     const foundKeywords = keywords.filter(keyword =>
@@ -233,13 +169,9 @@ useEffect(() => {
     );
 
     setMissingKeywords(missing);
-
-    if (keywords.length > 0) {
-      setAtsScore(
-        Math.round((foundKeywords.length / keywords.length) * 100)
-      );
-    }
-  }, [personal, skills, projects, experience, keywords]);
+    setRecommendedSkills(missing.slice(0, 4));
+    setAtsScore(Math.round((foundKeywords.length / keywords.length) * 100));
+  }, [personal, skills, projects, experience]);
 
   // ─────────────────── Live Consistency Memoized Engine ───────────────────
   const activeConsistencyWarnings = React.useMemo(() => {
@@ -277,6 +209,13 @@ useEffect(() => {
       toast.success("Resume version layout tracked successfully!");
     }
   }, [experience, education, projects, personal, skills, generateMarkdown]);
+
+  const restoreVersion = React.useCallback((version) => {
+    setSelectedVersion(version);
+    if (typeof toast !== 'undefined') {
+      toast.success(`Restored version from ${version.timestamp}`);
+    }
+  }, []);
 
   // ─────────────────── Automated Recommendations Engine ───────────────────
   useEffect(() => {
@@ -481,22 +420,7 @@ useEffect(() => {
     try {
       setIsSubmitting(true)
       const markdown = generateMarkdown()
-      const restoreVersion = (version) => {
-  setSelectedVersion(version)
 
-  toast.success(
-    `Restored version from ${version.timestamp}`
-  )
-}
-      const saveVersion = () => {
-  const newVersion = {
-    id: Date.now(),
-    timestamp: new Date().toLocaleString(),
-    content: generateMarkdown(),
-  }
-
-  setResumeVersions(prev => [newVersion, ...prev])
-}
       const response = await resumeApi.create({
         originalText: markdown,
         jobRole: targetRole || 'Software Engineer',
