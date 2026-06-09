@@ -1,5 +1,18 @@
 export const templates = [
- {
+{
+  "id": "Fake_WebOS_Operating_System",
+  "title": "Fake WebOS Operating System",
+  "category": "Portfolio",
+  "colorScheme": "Dark",
+  "layout": "Interactive",
+  "author": "System",
+  "views": 0,
+  "rating": 4.9,
+  "image": "/templates/Fake_WebOS_Operating_System.png",
+  "createdAt": "2026-06-09",
+  "isComplete": true
+},
+{
   "id": "Hidden_Easter_Egg_Scavenger_Hunt",
   "title": "Hidden Easter Egg Scavenger Hunt",
   "category": "Portfolio",
