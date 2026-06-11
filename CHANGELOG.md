@@ -1,3 +1,10 @@
+# [1.216.0](https://github.com/anurag3407/career-pilot/compare/v1.215.1...v1.216.0) (2026-06-11)
+
+
+### Features
+
+* **portfolio:** add Morse Code Flashing Decoder template ([844016a](https://github.com/anurag3407/career-pilot/commit/844016a3eb14b1bddbff8ccbfcb65b68c01578a3))
+
 ## [1.215.1](https://github.com/anurag3407/career-pilot/compare/v1.215.0...v1.215.1) (2026-06-11)
 
 
