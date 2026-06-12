@@ -1,3 +1,19 @@
+# [1.224.0](https://github.com/anurag3407/career-pilot/compare/v1.223.0...v1.224.0) (2026-06-12)
+
+
+### Bug Fixes
+
+* address codeant-ai review comments ([02c9270](https://github.com/anurag3407/career-pilot/commit/02c92705c32d8775b0621e04b3701d583521454b))
+* address coderabbitai review comments ([1bea4ec](https://github.com/anurag3407/career-pilot/commit/1bea4ecb6b7f99498b77874fbe95fce7db68d053))
+* resolve case-sensitive import error for SectionLabel on Linux runner ([75e56a4](https://github.com/anurag3407/career-pilot/commit/75e56a408f8b102e3b619ff2beb457709a07d350))
+* resolve duplicate Clock import error breaking the build ([144f696](https://github.com/anurag3407/career-pilot/commit/144f696192e9fffd4587f07fafb06d532d15846d))
+* resolve remaining case-sensitive import errors for SectionLabel ([039c432](https://github.com/anurag3407/career-pilot/commit/039c4328f0287fb52600e4e22ecda81118d26f68))
+
+
+### Features
+
+* implement interview history and replay dashboards ([#434](https://github.com/anurag3407/career-pilot/issues/434)) ([7d08f8a](https://github.com/anurag3407/career-pilot/commit/7d08f8a8bdf2a525cd08c7e200eb49123fd60f3f))
+
 # [1.223.0](https://github.com/anurag3407/career-pilot/compare/v1.222.0...v1.223.0) (2026-06-12)
 
 
