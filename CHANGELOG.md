@@ -1,3 +1,10 @@
+# [1.229.0](https://github.com/anurag3407/career-pilot/compare/v1.228.0...v1.229.0) (2026-06-13)
+
+
+### Features
+
+* add IKEA Assembly Manual portfolio template ([3558afc](https://github.com/anurag3407/career-pilot/commit/3558afc97d67ebea2a582f290fcfc8c43c830681))
+
 # [1.228.0](https://github.com/anurag3407/career-pilot/compare/v1.227.0...v1.228.0) (2026-06-13)
 
 
